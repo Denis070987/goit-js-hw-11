@@ -9,6 +9,7 @@ const submitBtn = document.querySelector('button');
 const loadBtn = document.querySelector('.load-more')
 form.addEventListener('submit', onSearch);
 loadBtn.addEventListener('click', onLoad)
+
 loadBtn.setAttribute('hidden', true)
 
 let searchValue = '';
@@ -17,7 +18,7 @@ let page = 1;
 function onLoad(){
   page += 1
   axiosApi(searchValue, page).then(data => {
-    creatMarkup(data.hits)
+    makeGallery.insertAdjacentHTML('beforeend',creatMarkup(data.hits))
     if (data.hits.length < 39 ) {
       loadBtn.setAttribute('hidden', true)
     }
@@ -26,17 +27,16 @@ function onLoad(){
 
  function onSearch(evt) {
      evt.preventDefault();
-      searchValue = form.searchQuery.value
-     axiosApi(searchValue).then(data => creatMarkup(data.hits)).catch(error => {if (error.response) {
-      console.log(error.response.data);
-      console.log(error.response.status);
-      console.log(error.response.headers);
-    } else if (error.request) {
-      console.log(error.request);
-    } else {
-      console.log('Error', error.message);
-     }
-    console.log(error.config)})
+   searchValue = form.searchQuery.value
+   if (searchValue === '') {
+     makeGallery.innerHTML = ''
+     console.log('not')
+     loadBtn.setAttribute('hidden', true)
+   } else {
+     loadBtn.removeAttribute('hidden', true)
+     axiosApi(searchValue).then(data => makeGallery.innerHTML = creatMarkup(data.hits)).catch(error => console.log(error.config))
+   }
+  
 };
 
 async function axiosApi(name, page = 1) {
@@ -48,8 +48,9 @@ async function axiosApi(name, page = 1) {
 
 
 function creatMarkup(arr) {
-    const markup = arr.map(item => 
-        `<div class="photo-card">
+  
+  return arr.map(item =>
+    `<div class="photo-card">
    <a href="${item.largeImageURL}"></a>
    <div class="thumb">
   <img src="${item.webformatURL}" alt="${item.tags}" loading="lazy" />
@@ -74,8 +75,12 @@ function creatMarkup(arr) {
     </div>
 </div>`).join('');
     
-  makeGallery.insertAdjacentHTML('beforeend', markup);
-  loadBtn.removeAttribute('hidden', true)
-};
+  // makeGallery.insertAdjacentHTML('beforeend', markup);
+  // makeGallery.innerHTML = markup
+  
+  // if (searchValue === '') {
+  //   makeGallery.remove()
+  // }
 
+}
 
