@@ -9,17 +9,24 @@ const submitBtn = document.querySelector('button');
 const loadBtn = document.querySelector('.load-more')
 form.addEventListener('submit', onSearch);
 loadBtn.addEventListener('click', onLoad)
+loadBtn.setAttribute('hidden', true)
 
-let page = 1
+let searchValue = '';
+let page = 1;
 
 function onLoad(){
   page += 1
-  axiosApi(page).then(data => creatMarkup(data))
-}
+  axiosApi(searchValue, page).then(data => {
+    creatMarkup(data.hits)
+    if (data.hits.length < 39 ) {
+      loadBtn.setAttribute('hidden', true)
+    }
+  })
+};
 
  function onSearch(evt) {
      evt.preventDefault();
-     const searchValue = form.searchQuery.value
+      searchValue = form.searchQuery.value
      axiosApi(searchValue).then(data => creatMarkup(data.hits)).catch(error => {if (error.response) {
       console.log(error.response.data);
       console.log(error.response.status);
@@ -30,13 +37,13 @@ function onLoad(){
       console.log('Error', error.message);
      }
     console.log(error.config)})
-}
+};
 
-async function axiosApi(name, page) {
+async function axiosApi(name, page = 1) {
     const response = await axios.get(`https://pixabay.com/api/?key=31616133-e43619194a5e3cbf561fcd52b&q=${name}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=40`);
     const data =  response.data;
     return data
-}
+};
 
 
 
@@ -67,7 +74,8 @@ function creatMarkup(arr) {
     </div>
 </div>`).join('');
     
-    makeGallery.insertAdjacentHTML('beforeend', markup) 
-}
+  makeGallery.insertAdjacentHTML('beforeend', markup);
+  loadBtn.removeAttribute('hidden', true)
+};
 
 
