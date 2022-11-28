@@ -1,3 +1,38 @@
 form{
     text-align: center;
 }
+
+.gallery{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+.thumb{
+    height: 300px;
+   width: 450px;
+}
+img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover
+}
+.info{
+    border-bottom-left-radius:  10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+   background-color: rgba(95, 93, 90, 0.158);
+}
+
+b{
+    font-size: 18px;
+}
+span{
+    font-size: 16px;
+    
+}
+p{
+text-align: center;
+}
