@@ -1,8 +1,25 @@
+.wrap{
+    
+}
+
+
 form{
-    text-align: center;
+    display: flex;
+    margin-top: -12px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50%;
+    padding-right: 50%;
+    
+    background-color: rgba(66, 84, 189, 0.980);
+    /* margin-top: 10px; */
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .gallery{
+    padding-top: 80px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -23,7 +40,7 @@ img {
     border-bottom-right-radius: 10px;
     display: flex;
     justify-content: space-evenly;
-   background-color: rgba(95, 93, 90, 0.158);
+   background-color: rgba(103, 119, 207, 0.178);
 }
 
 b{
@@ -38,6 +55,7 @@ text-align: center;
 }
 
 .btn{
+    
    margin-top: 30px;
     text-align: center;
 }
