@@ -1,64 +1,72 @@
-body{
-    background-image: url(/src/images/backgroundimg\ .jpg);
+body {
+  background-image: url(/src/images/backgroundimg\ .jpg);
 }
 
-form{
-    display: flex;
-    margin-top: -12px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 50%;
-    padding-right: 50%;
-    
-    background-color: rgba(1, 70, 53, 0.98);
-    /* margin-top: 10px; */
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%);
+form {
+  display: flex;
+  margin-top: -12px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 50%;
+  padding-right: 50%;
+
+  background-color: rgba(1, 70, 53, 0.98);
+  /* margin-top: 10px; */
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
 }
 
-.gallery{
-    color: rgb(235, 233, 233);
-    padding-top: 80px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
+.gallery {
+  color: rgb(235, 233, 233);
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
 }
-.thumb{
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-    border: 2px solid rgba(8, 155, 111, 0.651);
-    height: 300px;
-   width: 450px;
+.thumb {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border: 2px solid rgba(8, 155, 111, 0.651);
+  height: 300px;
+  width: 450px;
 }
 img {
-    display: block;
-    height: 100%;
-    width: 100%;
-    object-fit: cover
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
-.info{
-    border-bottom-left-radius:  7px;
-    border-bottom-right-radius: 7px;
-    display: flex;
-    justify-content: space-evenly;
-   background-color: rgba(8, 146, 93, 0.151);
+.info {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgba(8, 146, 93, 0.151);
 }
 
-b{
-    font-size: 18px;
+b {
+  font-size: 18px;
 }
-span{
-    font-size: 16px;
-    
+span {
+  font-size: 16px;
 }
-p{
+p {
+  text-align: center;
+}
+
+.btn_block{
 text-align: center;
 }
 
-.btn{
-    
-   margin-top: 30px;
-    text-align: center;
+.load-more {
+  color: bisque;
+  background-color: rgba(1, 70, 53, 0.98);
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 6px 9px 6px 9px;
+  border-radius: 5px;
+  border-color: transparent;
+  outline: none;
 }
