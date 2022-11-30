@@ -11,16 +11,11 @@ const loadBtn = document.querySelector('.load-more');
 
 form.addEventListener('submit', onSearch);
 loadBtn.addEventListener('click', onLoad);
-
 loadBtn.setAttribute('hidden', true);
 
-
-
-
-
-
-let searchValue = '';
 let page = 1;
+let searchValue = '';
+
 let lightBox = new SimpleLightbox('.photo-card a', {
   captions: true,
   captionsData: 'alt',
@@ -28,10 +23,10 @@ let lightBox = new SimpleLightbox('.photo-card a', {
 });
 
 function onLoad() {
-page += 1;
+  page += 1;
   axiosRequest(searchValue, page).then(data => {
     makeGallery.insertAdjacentHTML('beforeend', creatMarkup(data.hits)),
-      lightBox.refresh()
+      lightBox.refresh();
     if (data.hits.length < 39) {
       Notiflix.Notify.info(
         'Were sorry, but youve reached the end of search results.'
@@ -43,8 +38,7 @@ page += 1;
 
 function onSearch(evt) {
   evt.preventDefault();
-
-lightBox.refresh();
+  page = 1;
   searchValue = form.searchQuery.value;
   axiosRequest(searchValue)
     .then(data => {
@@ -71,8 +65,7 @@ async function axiosRequest(name, page = 1) {
 }
 
 function creatMarkup(arr) {
-
-loadBtn.removeAttribute('hidden', true);
+  loadBtn.removeAttribute('hidden', true);
   return arr
     .map(
       item =>
@@ -103,16 +96,3 @@ loadBtn.removeAttribute('hidden', true);
     )
     .join('');
 }
-
-
-
-// const { height: cardHeight } = document
-//   .querySelector(".gallery")
-//   .firstElementChild.getBoundingClientRect();
-
-// function scroll(){
-//     window.scrollBy({
-//   top: cardHeight * 2,
-//   behavior: "smooth",
-// });
-//   }
